@@ -1,0 +1,34 @@
+.wrapper {
+  @apply flex items-center;
+}
+
+.checkbox {
+  @apply bottom-1
+    mr-2
+    flex
+    h-4
+    w-4
+    items-center
+    justify-center
+    rounded 
+    border
+    text-white
+    transition-all
+    duration-300;
+}
+
+.checked {
+  @apply bg-primary-500;
+}
+
+.label {
+  @apply text-primary-900 text-sm;
+}
+
+.svg {
+  @apply relative -top-[1px] h-[10px] w-[10px] stroke-current;
+}
+
+.checkMark {
+  @apply transition-all duration-300;
+}

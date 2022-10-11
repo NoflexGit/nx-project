@@ -1,0 +1,41 @@
+.button {
+  @apply rounded-md  font-semibold leading-6;
+}
+
+/* Sizes */
+
+.sm {
+  @apply px-4 py-1.5 text-xs;
+}
+
+.md {
+  @apply px-4 py-2.5 text-sm;
+}
+
+.lg {
+  @apply px-6 py-3.5 text-lg;
+}
+
+/* Colors */
+
+.primary {
+  @apply bg-primary-500 text-white;
+
+  &:hover {
+    @apply bg-primary-600;
+  }
+
+  &:active {
+    @apply bg-primary-700;
+  }
+
+  &:disabled {
+    @apply bg-primary-200;
+  }
+}
+
+/* Other */
+
+.fluid {
+  @apply w-full;
+}

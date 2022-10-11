@@ -1,0 +1,13 @@
+@tailwind components;
+@tailwind base;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500;600;700&display=swap');
+
+html,
+body {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}

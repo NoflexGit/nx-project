@@ -1,0 +1,47 @@
+.component {
+}
+
+/* Colors */
+
+.primary {
+}
+
+.secondary {
+  @apply text-secondary-500;
+}
+
+/* Font weight */
+
+.regular {
+  @apply font-light;
+}
+.medium {
+  @apply font-medium;
+}
+.semibold {
+  @apply font-semibold;
+}
+.bold {
+  @apply font-bold;
+}
+
+/* Sized */
+
+.sm {
+  @apply text-sm;
+}
+.md {
+  @apply text-base leading-5;
+}
+.lg {
+  @apply text-lg leading-6;
+}
+.xl {
+  @apply text-2xl leading-7;
+}
+.2xl {
+  @apply text-4xl leading-8;
+}
+.3xl {
+  @apply text-7xl;
+}
