@@ -1,31 +1,345 @@
-import { Typography } from '@nx-project/components';
+import {
+  Select,
+  SelectItem,
+  Separator,
+  Typography,
+} from '@nx-project/components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
-import { AppPropsWithLayout } from '../../types';
+import { ReactComponent as ArrowsSVG } from '../../static/icons/bold/arrow-dimensions.svg';
+import { ReactComponent as LocationSVG } from '../../static/icons/bold/location.svg';
+import { ReactComponent as BedSVG } from '../../static/icons/outline/bedroom.svg';
+import { ReactComponent as PairSVG } from '../../static/icons/outline/pair.svg';
 
-export function Dashboard(props: AppPropsWithLayout) {
+export function Dashboard() {
   return (
     <>
-      <Typography.Title size="xl" weight="bold">
-        Dashboard
+      <Typography.Title size="xl" weight="bold" className="mb-5">
+        Find Your Best Real Estate
       </Typography.Title>
       <div className="rounded-2xl bg-white p-6">
-        <div className="grid grid-cols-3 gap-4">
-          <div>
-            <div className="h-44 w-full relative rounded-lg overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          <Select>
+            <SelectItem key="red panda">Red Panda</SelectItem>
+            <SelectItem key="cat">Cat</SelectItem>
+          </Select>
+        </div>
+        <Separator className="my-6" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article>
+            <div className="h-44 w-full relative rounded-lg overflow-hidden mb-3">
               <Image
                 alt=""
                 layout="fill"
                 objectFit="cover"
-                width={700}
-                height={475}
                 src={
                   'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
                 }
               />
             </div>
-          </div>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="col-span-2">
+                <Link href="/details/1">
+                  <a>
+                    <Typography.Title
+                      weight="bold"
+                      tag="h4"
+                      className="mb-2 hover:text-primary-500"
+                    >
+                      Star Sun Hotel & Apartment
+                    </Typography.Title>
+                  </a>
+                </Link>
+                <div className="flex items-center">
+                  <LocationSVG
+                    width="16"
+                    height="16"
+                    className="inline-block mr-2 flex-none text-primary-900"
+                  />
+                  <Typography.Text color="secondary" size="sm">
+                    Jl Letda Nasir 45 RT 001/02
+                  </Typography.Text>
+                </div>
+                <div className="flex w-full mt-5 justify-between">
+                  <Typography.Text size="sm" weight="semibold">
+                    <BedSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    2
+                  </Typography.Text>
+                  <Typography.Text size="sm" weight="semibold">
+                    <PairSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    3
+                  </Typography.Text>
+                  <Typography.Text size="sm" weight="semibold">
+                    <ArrowsSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    24 M<sup>2</sup>
+                  </Typography.Text>
+                </div>
+              </div>
+              <div className="col-span-1 text-right">
+                <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100">
+                  $80
+                </span>
+              </div>
+            </div>
+          </article>
+          <article>
+            <div className="h-44 w-full relative rounded-lg overflow-hidden mb-3">
+              <Image
+                alt=""
+                layout="fill"
+                objectFit="cover"
+                src={
+                  'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+                }
+              />
+            </div>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="col-span-2">
+                <Link href="/details/1">
+                  <a>
+                    <Typography.Title
+                      weight="bold"
+                      tag="h4"
+                      className="mb-2 hover:text-primary-500"
+                    >
+                      Star Sun Hotel & Apartment
+                    </Typography.Title>
+                  </a>
+                </Link>
+                <div className="flex items-center">
+                  <LocationSVG
+                    width="16"
+                    height="16"
+                    className="inline-block mr-2 flex-none text-primary-900"
+                  />
+                  <Typography.Text color="secondary" size="sm">
+                    Jl Letda Nasir 45 RT 001/02
+                  </Typography.Text>
+                </div>
+                <div className="flex w-full mt-5 justify-between">
+                  <Typography.Text size="sm" weight="semibold">
+                    <BedSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    2
+                  </Typography.Text>
+                  <Typography.Text size="sm" weight="semibold">
+                    <PairSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    3
+                  </Typography.Text>
+                  <Typography.Text size="sm" weight="semibold">
+                    <ArrowsSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    24 M<sup>2</sup>
+                  </Typography.Text>
+                </div>
+              </div>
+              <div className="col-span-1 text-right">
+                <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100">
+                  $80
+                </span>
+              </div>
+            </div>
+          </article>
+          <article>
+            <div className="h-44 w-full relative rounded-lg overflow-hidden mb-3">
+              <Image
+                alt=""
+                layout="fill"
+                objectFit="cover"
+                src={
+                  'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+                }
+              />
+            </div>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="col-span-2">
+                <Link href="/details/1">
+                  <a>
+                    <Typography.Title
+                      weight="bold"
+                      tag="h4"
+                      className="mb-2 hover:text-primary-500"
+                    >
+                      Star Sun Hotel & Apartment
+                    </Typography.Title>
+                  </a>
+                </Link>
+                <div className="flex items-center">
+                  <LocationSVG
+                    width="16"
+                    height="16"
+                    className="inline-block mr-2 flex-none text-primary-900"
+                  />
+                  <Typography.Text color="secondary" size="sm">
+                    Jl Letda Nasir 45 RT 001/02
+                  </Typography.Text>
+                </div>
+                <div className="flex w-full mt-5 justify-between">
+                  <Typography.Text size="sm" weight="semibold">
+                    <BedSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    2
+                  </Typography.Text>
+                  <Typography.Text size="sm" weight="semibold">
+                    <PairSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    3
+                  </Typography.Text>
+                  <Typography.Text size="sm" weight="semibold">
+                    <ArrowsSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    24 M<sup>2</sup>
+                  </Typography.Text>
+                </div>
+              </div>
+              <div className="col-span-1 text-right">
+                <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100">
+                  $80
+                </span>
+              </div>
+            </div>
+          </article>
+          <article>
+            <div className="h-44 w-full relative rounded-lg overflow-hidden mb-3">
+              <Image
+                alt=""
+                layout="fill"
+                objectFit="cover"
+                src={
+                  'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+                }
+              />
+            </div>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="col-span-2">
+                <Link href="/details/1">
+                  <a>
+                    <Typography.Title
+                      weight="bold"
+                      tag="h4"
+                      className="mb-2 hover:text-primary-500"
+                    >
+                      Star Sun Hotel & Apartment
+                    </Typography.Title>
+                  </a>
+                </Link>
+                <div className="flex items-center">
+                  <LocationSVG
+                    width="16"
+                    height="16"
+                    className="inline-block mr-2 flex-none text-primary-900"
+                  />
+                  <Typography.Text color="secondary" size="sm">
+                    Jl Letda Nasir 45 RT 001/02
+                  </Typography.Text>
+                </div>
+                <div className="flex w-full mt-5 justify-between">
+                  <Typography.Text size="sm" weight="semibold">
+                    <BedSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    2
+                  </Typography.Text>
+                  <Typography.Text size="sm" weight="semibold">
+                    <PairSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    3
+                  </Typography.Text>
+                  <Typography.Text size="sm" weight="semibold">
+                    <ArrowsSVG
+                      width="16"
+                      height="16"
+                      className="inline-block mr-2 flex-none text-secondary-300"
+                    />
+                    24 M<sup>2</sup>
+                  </Typography.Text>
+                </div>
+              </div>
+              <div className="col-span-1 text-right">
+                <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100">
+                  $80
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div className="rounded-2xl mt-6 bg-white p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <article className="grid grid-cols-3 gap-6">
+            <div className="col-span-1">
+              <div className="h-[140px] w-full relative rounded-lg overflow-hidden mb-3">
+                <Image
+                  alt=""
+                  layout="fill"
+                  objectFit="cover"
+                  src={
+                    'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+                  }
+                />
+              </div>
+            </div>
+            <div className="col-span-2">
+              <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100 mb-4">
+                $80
+              </span>
+              <Typography.Title weight="bold" className="mb-2">
+                Star Sun Hotel & Apartment
+              </Typography.Title>
+              <Typography.Text color="secondary" size="sm">
+                Jl Letda Nasir 45 RT 001/02
+              </Typography.Text>
+              <div className="grid grid-cols-3 gap-4 mt-4 w-9/12">
+                <Typography.Text size="sm" weight="semibold">
+                  2
+                </Typography.Text>
+                <Typography.Text size="sm" weight="semibold">
+                  3
+                </Typography.Text>
+                <Typography.Text size="sm" weight="semibold">
+                  24M
+                </Typography.Text>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </>

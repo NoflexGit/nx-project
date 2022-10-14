@@ -5,6 +5,15 @@ module.exports = {
 
   core: { ...rootMain.core, builder: 'webpack5' },
 
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+    },
+  },
+
   stories: [
     ...rootMain.stories,
     '../src/lib/**/*.stories.mdx',

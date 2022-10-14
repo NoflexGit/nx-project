@@ -1,8 +1,8 @@
 import Head from 'next/head';
+import { SSRProvider } from 'react-aria';
 
 import '../styles/global.css';
 import { AppPropsWithLayout } from '../types';
-
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -12,7 +12,9 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       <Head>
         <title>Welcome to frontend!</title>
       </Head>
-      <main className="app">{getLayout(<Component {...pageProps} />)}</main>
+      <SSRProvider>
+        <main className="app">{getLayout(<Component {...pageProps} />)}</main>
+      </SSRProvider>
     </>
   );
 }

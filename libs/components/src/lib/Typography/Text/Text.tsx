@@ -2,10 +2,7 @@ import cn from 'clsx';
 import { TypographySizes, TypographyWeights } from 'libs/components/src/types';
 import { HTMLAttributes, ReactNode } from 'react';
 
-
-
 import styles from './Text.module.css';
-
 
 export interface TextProps extends HTMLAttributes<HTMLHeadingElement> {
   children?: ReactNode;

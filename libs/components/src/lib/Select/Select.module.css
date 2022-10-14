@@ -1,0 +1,11 @@
+.component {
+  @apply relative inline-flex w-full flex-col;
+}
+
+.input {
+  @apply flex h-11 w-full items-center rounded-md border border-gray-300 px-5 py-3;
+}
+
+.label {
+  @apply mb-2.5 block text-sm font-medium leading-5 text-gray-700;
+}

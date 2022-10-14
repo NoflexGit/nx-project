@@ -1,0 +1,11 @@
+.component {
+  @apply bg-secondary-100;
+}
+
+.verticle {
+  @apply h-full w-px;
+}
+
+.horizontal {
+  @apply h-px w-full;
+}

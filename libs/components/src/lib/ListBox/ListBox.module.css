@@ -1,0 +1,3 @@
+.component {
+    @apply max-h-72 overflow-auto outline-none;
+}
