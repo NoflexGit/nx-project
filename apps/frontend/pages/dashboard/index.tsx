@@ -20,16 +20,24 @@ export function Dashboard() {
         Find Your Best Real Estate
       </Typography.Title>
       <div className="rounded-2xl bg-white p-6">
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <Select>
+            <SelectItem key="red panda">Red Panda</SelectItem>
+            <SelectItem key="cat">Cat</SelectItem>
+          </Select>
+          <Select>
+            <SelectItem key="red panda">Red Panda</SelectItem>
+            <SelectItem key="cat">Cat</SelectItem>
+          </Select>
           <Select>
             <SelectItem key="red panda">Red Panda</SelectItem>
             <SelectItem key="cat">Cat</SelectItem>
           </Select>
         </div>
         <Separator className="my-6" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <article>
-            <div className="h-44 w-full relative rounded-lg overflow-hidden mb-3">
+            <div className="relative mb-3 h-44 w-full overflow-hidden rounded-lg">
               <Image
                 alt=""
                 layout="fill"
@@ -46,7 +54,7 @@ export function Dashboard() {
                     <Typography.Title
                       weight="bold"
                       tag="h4"
-                      className="mb-2 hover:text-primary-500"
+                      className="hover:text-primary-500 mb-2"
                     >
                       Star Sun Hotel & Apartment
                     </Typography.Title>
@@ -56,18 +64,18 @@ export function Dashboard() {
                   <LocationSVG
                     width="16"
                     height="16"
-                    className="inline-block mr-2 flex-none text-primary-900"
+                    className="text-primary-900 mr-2 inline-block flex-none"
                   />
                   <Typography.Text color="secondary" size="sm">
                     Jl Letda Nasir 45 RT 001/02
                   </Typography.Text>
                 </div>
-                <div className="flex w-full mt-5 justify-between">
+                <div className="mt-5 flex w-full justify-between">
                   <Typography.Text size="sm" weight="semibold">
                     <BedSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     2
                   </Typography.Text>
@@ -75,7 +83,7 @@ export function Dashboard() {
                     <PairSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     3
                   </Typography.Text>
@@ -83,21 +91,21 @@ export function Dashboard() {
                     <ArrowsSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     24 M<sup>2</sup>
                   </Typography.Text>
                 </div>
               </div>
               <div className="col-span-1 text-right">
-                <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100">
+                <span className="text-primary-500 bg-primary-100 inline-block rounded-lg px-2 py-1 text-base font-bold">
                   $80
                 </span>
               </div>
             </div>
           </article>
           <article>
-            <div className="h-44 w-full relative rounded-lg overflow-hidden mb-3">
+            <div className="relative mb-3 h-44 w-full overflow-hidden rounded-lg">
               <Image
                 alt=""
                 layout="fill"
@@ -114,7 +122,7 @@ export function Dashboard() {
                     <Typography.Title
                       weight="bold"
                       tag="h4"
-                      className="mb-2 hover:text-primary-500"
+                      className="hover:text-primary-500 mb-2"
                     >
                       Star Sun Hotel & Apartment
                     </Typography.Title>
@@ -124,18 +132,18 @@ export function Dashboard() {
                   <LocationSVG
                     width="16"
                     height="16"
-                    className="inline-block mr-2 flex-none text-primary-900"
+                    className="text-primary-900 mr-2 inline-block flex-none"
                   />
                   <Typography.Text color="secondary" size="sm">
                     Jl Letda Nasir 45 RT 001/02
                   </Typography.Text>
                 </div>
-                <div className="flex w-full mt-5 justify-between">
+                <div className="mt-5 flex w-full justify-between">
                   <Typography.Text size="sm" weight="semibold">
                     <BedSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     2
                   </Typography.Text>
@@ -143,7 +151,7 @@ export function Dashboard() {
                     <PairSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     3
                   </Typography.Text>
@@ -151,21 +159,21 @@ export function Dashboard() {
                     <ArrowsSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     24 M<sup>2</sup>
                   </Typography.Text>
                 </div>
               </div>
               <div className="col-span-1 text-right">
-                <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100">
+                <span className="text-primary-500 bg-primary-100 inline-block rounded-lg px-2 py-1 text-base font-bold">
                   $80
                 </span>
               </div>
             </div>
           </article>
           <article>
-            <div className="h-44 w-full relative rounded-lg overflow-hidden mb-3">
+            <div className="relative mb-3 h-44 w-full overflow-hidden rounded-lg">
               <Image
                 alt=""
                 layout="fill"
@@ -182,7 +190,7 @@ export function Dashboard() {
                     <Typography.Title
                       weight="bold"
                       tag="h4"
-                      className="mb-2 hover:text-primary-500"
+                      className="hover:text-primary-500 mb-2"
                     >
                       Star Sun Hotel & Apartment
                     </Typography.Title>
@@ -192,18 +200,18 @@ export function Dashboard() {
                   <LocationSVG
                     width="16"
                     height="16"
-                    className="inline-block mr-2 flex-none text-primary-900"
+                    className="text-primary-900 mr-2 inline-block flex-none"
                   />
                   <Typography.Text color="secondary" size="sm">
                     Jl Letda Nasir 45 RT 001/02
                   </Typography.Text>
                 </div>
-                <div className="flex w-full mt-5 justify-between">
+                <div className="mt-5 flex w-full justify-between">
                   <Typography.Text size="sm" weight="semibold">
                     <BedSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     2
                   </Typography.Text>
@@ -211,7 +219,7 @@ export function Dashboard() {
                     <PairSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     3
                   </Typography.Text>
@@ -219,21 +227,21 @@ export function Dashboard() {
                     <ArrowsSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     24 M<sup>2</sup>
                   </Typography.Text>
                 </div>
               </div>
               <div className="col-span-1 text-right">
-                <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100">
+                <span className="text-primary-500 bg-primary-100 inline-block rounded-lg px-2 py-1 text-base font-bold">
                   $80
                 </span>
               </div>
             </div>
           </article>
           <article>
-            <div className="h-44 w-full relative rounded-lg overflow-hidden mb-3">
+            <div className="relative mb-3 h-44 w-full overflow-hidden rounded-lg">
               <Image
                 alt=""
                 layout="fill"
@@ -250,7 +258,7 @@ export function Dashboard() {
                     <Typography.Title
                       weight="bold"
                       tag="h4"
-                      className="mb-2 hover:text-primary-500"
+                      className="hover:text-primary-500 mb-2"
                     >
                       Star Sun Hotel & Apartment
                     </Typography.Title>
@@ -260,18 +268,18 @@ export function Dashboard() {
                   <LocationSVG
                     width="16"
                     height="16"
-                    className="inline-block mr-2 flex-none text-primary-900"
+                    className="text-primary-900 mr-2 inline-block flex-none"
                   />
                   <Typography.Text color="secondary" size="sm">
                     Jl Letda Nasir 45 RT 001/02
                   </Typography.Text>
                 </div>
-                <div className="flex w-full mt-5 justify-between">
+                <div className="mt-5 flex w-full justify-between">
                   <Typography.Text size="sm" weight="semibold">
                     <BedSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     2
                   </Typography.Text>
@@ -279,7 +287,7 @@ export function Dashboard() {
                     <PairSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     3
                   </Typography.Text>
@@ -287,14 +295,14 @@ export function Dashboard() {
                     <ArrowsSVG
                       width="16"
                       height="16"
-                      className="inline-block mr-2 flex-none text-secondary-300"
+                      className="text-secondary-300 mr-2 inline-block flex-none"
                     />
                     24 M<sup>2</sup>
                   </Typography.Text>
                 </div>
               </div>
               <div className="col-span-1 text-right">
-                <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100">
+                <span className="text-primary-500 bg-primary-100 inline-block rounded-lg px-2 py-1 text-base font-bold">
                   $80
                 </span>
               </div>
@@ -302,11 +310,11 @@ export function Dashboard() {
           </article>
         </div>
       </div>
-      <div className="rounded-2xl mt-6 bg-white p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="mt-6 rounded-2xl bg-white p-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <article className="grid grid-cols-3 gap-6">
             <div className="col-span-1">
-              <div className="h-[140px] w-full relative rounded-lg overflow-hidden mb-3">
+              <div className="relative mb-3 h-[140px] w-full overflow-hidden rounded-lg">
                 <Image
                   alt=""
                   layout="fill"
@@ -318,7 +326,7 @@ export function Dashboard() {
               </div>
             </div>
             <div className="col-span-2">
-              <span className="rounded-lg text-base font-bold text-primary-500 px-2 py-1 inline-block bg-primary-100 mb-4">
+              <span className="text-primary-500 bg-primary-100 mb-4 inline-block rounded-lg px-2 py-1 text-base font-bold">
                 $80
               </span>
               <Typography.Title weight="bold" className="mb-2">
@@ -327,7 +335,7 @@ export function Dashboard() {
               <Typography.Text color="secondary" size="sm">
                 Jl Letda Nasir 45 RT 001/02
               </Typography.Text>
-              <div className="grid grid-cols-3 gap-4 mt-4 w-9/12">
+              <div className="mt-4 grid w-9/12 grid-cols-3 gap-4">
                 <Typography.Text size="sm" weight="semibold">
                   2
                 </Typography.Text>

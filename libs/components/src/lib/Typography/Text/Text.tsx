@@ -7,7 +7,7 @@ import styles from './Text.module.css';
 export interface TextProps extends HTMLAttributes<HTMLHeadingElement> {
   children?: ReactNode;
   tag?: 'span' | 'p' | 'div';
-  size?: Exclude<TypographySizes, 'xs'>;
+  size?: TypographySizes;
   weight?: TypographyWeights;
   color?: 'primary' | 'secondary';
   className?: string;

@@ -27,11 +27,7 @@ export function ListBox(props: ListBoxProps) {
   const { listBoxProps } = useListBox(props, state, listBoxRef);
 
   return (
-    <ul
-      {...listBoxProps}
-      ref={listBoxRef}
-      className={styles.component}
-    >
+    <ul {...listBoxProps} ref={listBoxRef} className={styles.component}>
       {[...state.collection].map((item) =>
         item.type === 'section' ? (
           <ListBoxSection key={item.key} section={item} state={state} />
@@ -54,7 +50,7 @@ function ListBoxSection({ section, state }: SectionProps) {
       {section.rendered && (
         <span
           {...headingProps}
-          className="text-xs font-bold uppercase text-gray-500 mx-3"
+          className="mx-3 text-xs font-bold uppercase text-gray-500"
         >
           {section.rendered}
         </span>
@@ -89,7 +85,7 @@ function Option({ item, state }: OptionProps) {
     <li
       {...optionProps}
       ref={ref}
-      className={`m-1 rounded-md py-2 px-2 text-sm outline-none cursor-default flex items-center justify-between ${text} ${
+      className={`m-1 flex cursor-default items-center justify-between rounded-md py-2 px-2 text-sm outline-none ${text} ${
         isFocused ? 'bg-pink-100' : ''
       } ${isSelected ? 'font-bold' : ''}`}
     >

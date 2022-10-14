@@ -4,8 +4,8 @@
 /* Colors */
 
 .primary {
+  @apply text-primary-900;
 }
-
 .secondary {
   @apply text-secondary-500;
 }
@@ -13,7 +13,7 @@
 /* Font weight */
 
 .regular {
-  @apply font-light;
+  @apply font-normal;
 }
 .medium {
   @apply font-medium;
@@ -27,6 +27,9 @@
 
 /* Sized */
 
+.xs {
+  @apply text-xs;
+}
 .sm {
   @apply text-sm;
 }
