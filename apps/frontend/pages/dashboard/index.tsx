@@ -7,6 +7,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { ContentPlate } from '../../components';
 import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
 import { ReactComponent as ArrowsSVG } from '../../static/icons/bold/arrow-dimensions.svg';
 import { ReactComponent as LocationSVG } from '../../static/icons/bold/location.svg';
@@ -19,7 +20,7 @@ export function Dashboard() {
       <Typography.Title size="xl" weight="bold" className="mb-5">
         Find Your Best Real Estate
       </Typography.Title>
-      <div className="rounded-2xl bg-white p-6">
+      <ContentPlate>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <Select>
             <SelectItem key="red panda">Red Panda</SelectItem>
@@ -111,7 +112,7 @@ export function Dashboard() {
                 layout="fill"
                 objectFit="cover"
                 src={
-                  'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+                  'https://images.unsplash.com/photo-1559338391-e14b84a22772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80'
                 }
               />
             </div>
@@ -179,7 +180,7 @@ export function Dashboard() {
                 layout="fill"
                 objectFit="cover"
                 src={
-                  'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+                  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
                 }
               />
             </div>
@@ -247,7 +248,7 @@ export function Dashboard() {
                 layout="fill"
                 objectFit="cover"
                 src={
-                  'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+                  'https://images.unsplash.com/photo-1515263487990-61b07816b324?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
                 }
               />
             </div>
@@ -309,8 +310,8 @@ export function Dashboard() {
             </div>
           </article>
         </div>
-      </div>
-      <div className="mt-6 rounded-2xl bg-white p-6">
+      </ContentPlate>
+      <ContentPlate>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <article className="grid grid-cols-3 gap-6">
             <div className="col-span-1">
@@ -349,7 +350,7 @@ export function Dashboard() {
             </div>
           </article>
         </div>
-      </div>
+      </ContentPlate>
     </>
   );
 }

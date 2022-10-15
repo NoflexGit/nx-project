@@ -7,7 +7,7 @@ export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
   placeholder?: string;
   value?: string;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   fluid?: boolean;
 }
 
