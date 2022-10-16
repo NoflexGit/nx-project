@@ -6,6 +6,7 @@ import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
 import { AppPropsWithLayout } from '../../types';
 import { ReactComponent as LocationSVG } from '../../static/icons/bold/location.svg';
 import { ReactComponent as BedSVG } from '../../static/icons/outline/bedroom.svg';
+
 export function Details(props: AppPropsWithLayout) {
   return (
     <div className="space-y-6">

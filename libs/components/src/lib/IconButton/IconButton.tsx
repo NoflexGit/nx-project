@@ -2,30 +2,27 @@ import cn from 'clsx';
 import { useRef } from 'react';
 import { AriaButtonProps, useButton } from 'react-aria';
 
-import styles from './Button.module.css';
+import styles from './IconButton.module.css';
 
 /* eslint-disable-next-line */
-export interface ButtonProps extends AriaButtonProps {
+export interface IconButtonProps extends AriaButtonProps {
   view?: 'primary' | 'secondary' | 'minimal';
   className?: string;
   size?: 'sm' | 'md' | 'lg';
-  leftSlot?: React.ReactNode;
-  rightSlot?: React.ReactNode;
+  children?: React.ReactNode;
   fluid?: boolean;
 }
 
-export function Button({
+export function IconButton({
   view = 'primary',
   size = 'md',
   fluid = false,
   className,
-  leftSlot,
-  rightSlot,
+  children,
   ...restProps
-}: ButtonProps) {
+}: IconButtonProps) {
   const ref = useRef(null);
   const { buttonProps } = useButton(restProps, ref);
-  const { children } = restProps;
 
   const classes = cn(
     styles.component,
@@ -39,11 +36,9 @@ export function Button({
 
   return (
     <button {...buttonProps} ref={ref} className={classes}>
-      {leftSlot && <span className={styles.leftSlot}>{leftSlot}</span>}
       {children}
-      {rightSlot && <span className={styles.rightSlot}>{rightSlot}</span>}
     </button>
   );
 }
 
-export default Button;
+export default IconButton;

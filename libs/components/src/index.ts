@@ -7,3 +7,4 @@ export * from './lib/Checkbox/Checkbox';
 export * from './lib/Avatar/Avatar';
 export * from './lib/Separator/Separator';
 export * from './lib/Typography';
+export * from './lib/IconButton/IconButton';

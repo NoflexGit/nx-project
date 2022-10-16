@@ -1,5 +1,5 @@
-.button {
-  @apply rounded-md  font-semibold leading-6;
+.component {
+  @apply select-none rounded-md font-semibold leading-6;
 }
 
 /* Sizes */
@@ -30,7 +30,7 @@
   }
 
   &:disabled {
-    @apply bg-primary-200;
+    @apply bg-secondary-100;
   }
 }
 

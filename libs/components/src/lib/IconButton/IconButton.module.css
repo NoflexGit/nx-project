@@ -1,0 +1,73 @@
+.component {
+  @apply select-none rounded-md outline-hidden;
+}
+
+/* Sizes */
+
+.sm {
+  @apply p-4;
+}
+
+.md {
+  @apply p-4;
+}
+
+.lg {
+  @apply p-6;
+}
+
+/* Colors */
+
+.primary {
+  @apply bg-primary-500 text-white;
+
+  &:hover {
+    @apply bg-primary-600;
+  }
+
+  &:active {
+    @apply bg-primary-700;
+  }
+
+  &:disabled {
+    @apply bg-primary-200;
+  }
+}
+
+.secondary {
+  @apply bg-secondary-500 text-white;
+
+  &:hover {
+    @apply bg-secondary-600;
+  }
+
+  &:active {
+    @apply bg-secondary-700;
+  }
+
+  &:disabled {
+    @apply bg-secondary-200;
+  }
+}
+
+.minimal {
+  @apply text-secondary-500 bg-transparent;
+
+  &:hover {
+    @apply bg-secondary-100;
+  }
+
+  &:active {
+    @apply bg-secondary-200;
+  }
+
+  &:disabled {
+    @apply text-primary-100;
+  }
+}
+
+/* Other */
+
+.fluid {
+  @apply w-full;
+}

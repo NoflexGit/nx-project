@@ -186,7 +186,7 @@ export function Dashboard() {
             </div>
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-2">
-                <Link href="/details/1">
+                <Link href="/explore/details/1">
                   <a>
                     <Typography.Title
                       weight="bold"
