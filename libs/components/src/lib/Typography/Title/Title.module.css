@@ -1,6 +1,3 @@
-.component {
-}
-
 /* Colors */
 .primary {
   @apply text-primary-900;
@@ -15,12 +12,15 @@
 .regular {
   @apply font-light;
 }
+
 .medium {
   @apply font-medium;
 }
+
 .semibold {
   @apply font-semibold;
 }
+
 .bold {
   @apply font-bold;
 }
@@ -30,18 +30,23 @@
 .sm {
   @apply text-sm;
 }
+
 .md {
   @apply text-base;
 }
+
 .lg {
   @apply text-lg;
 }
+
 .xl {
   @apply text-2xl;
 }
+
 .2xl {
   @apply text-4xl;
 }
+
 .3xl {
   @apply text-7xl;
 }

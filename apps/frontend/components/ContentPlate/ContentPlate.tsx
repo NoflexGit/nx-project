@@ -7,7 +7,11 @@ export interface ContentPlateProps {
 
 export function ContentPlate({ children, className }: ContentPlateProps) {
   return (
-    <div className={`rounded-2xl bg-white p-6 ${className}`}>{children}</div>
+    <section
+      className={`overflow-hidden rounded-2xl bg-white p-6 ${className}`}
+    >
+      {children}
+    </section>
   );
 }
 

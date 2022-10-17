@@ -1,16 +1,11 @@
-import {
-  Button,
-  Checkbox,
-  TextField,
-  Typography,
-} from '@nx-project/components';
+import { Button, Checkbox, TextField, Typography } from '@common/components';
 
 export function Signin() {
   return (
     <main className="flex min-h-screen">
       <div className="basis-1/2 bg-[#fafafa]"></div>
       <div className="basis-1/2">
-        <div className="flex flex-col justify-center h-full mx-auto w-[450px]">
+        <div className="mx-auto flex h-full w-[450px] flex-col justify-center">
           <div className="space-y-4">
             <Typography.Title size="2xl" weight="bold">
               Welcome Back to Sewo!

@@ -15,7 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-project/components": ["libs/components/src/index.ts"]
+      "@common/components": ["libs/components/src/index.ts"],
+      "@frontend/components": ["apps/frontend/components/index.ts"],
+      "@frontend/layouts": ["apps/frontend/layouts/index.ts"],
+      "@frontend/assets/*": ["apps/frontend/assets/*"],
+      "@frontend/types": ["apps/frontend/types/index.ts"],
+      "@frontend/appolo/*": ["apps/frontend/appolo/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -21,7 +21,6 @@ export function Title({
   className,
 }: TitleProps) {
   const classes = cn(
-    styles.component,
     {
       [styles[weight]]: weight,
       [styles[size]]: size,

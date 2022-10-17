@@ -1,50 +1,57 @@
-.component {
-}
-
 /* Colors */
 
 .primary {
   @apply text-primary-900;
 }
+
 .secondary {
   @apply text-secondary-500;
 }
 
-/* Font weight */
+/* Font weights */
 
 .regular {
   @apply font-normal;
 }
+
 .medium {
   @apply font-medium;
 }
+
 .semibold {
   @apply font-semibold;
 }
+
 .bold {
   @apply font-bold;
 }
 
-/* Sized */
+/* Sizes */
 
 .xs {
   @apply text-xs;
 }
+
 .sm {
   @apply text-sm;
 }
+
 .md {
   @apply text-base leading-5;
 }
+
 .lg {
   @apply text-lg leading-6;
 }
+
 .xl {
   @apply text-2xl leading-7;
 }
+
 .2xl {
   @apply text-4xl leading-8;
 }
+
 .3xl {
   @apply text-7xl;
 }

@@ -1,11 +1,11 @@
-import { Button, Typography } from '@nx-project/components';
 import Image from 'next/image';
+import { Button, Typography } from '@common/components';
 
-import { ReviewCard, AgentInfo } from '../../components';
-import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
-import { AppPropsWithLayout } from '../../types';
-import { ReactComponent as LocationSVG } from '../../static/icons/bold/location.svg';
-import { ReactComponent as BedSVG } from '../../static/icons/outline/bedroom.svg';
+import { ReviewCard, AgentInfo } from '@frontend/components';
+import { DashboardLayout } from '@frontend/layouts';
+import { AppPropsWithLayout } from '@frontend/types';
+import { ReactComponent as LocationSVG } from '@frontend/assets/icons/bold/location.svg';
+import { ReactComponent as BedSVG } from '@frontend/assets/icons/outline/bedroom.svg';
 
 export function Details(props: AppPropsWithLayout) {
   return (

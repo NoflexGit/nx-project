@@ -1,10 +1,10 @@
 import NavLink from '../NavLink/NavLink';
 
-import { ReactComponent as DashboardSVG } from '../../static/icons/bold/category.svg';
-import { ReactComponent as DiscoverSVG } from '../../static/icons/bold/discover.svg';
-import { ReactComponent as TicketSVG } from '../../static/icons/bold/ticket.svg';
-import { ReactComponent as ChatSVG } from '../../static/icons/bold/chat.svg';
-import { ReactComponent as ProfileSVG } from '../../static/icons/bold/profile-circle.svg';
+import { ReactComponent as DashboardSVG } from '@frontend/assets/icons/bold/category.svg';
+import { ReactComponent as DiscoverSVG } from '@frontend/assets/icons/bold/discover.svg';
+import { ReactComponent as TicketSVG } from '@frontend/assets/icons/bold/ticket.svg';
+import { ReactComponent as ChatSVG } from '@frontend/assets/icons/bold/chat.svg';
+import { ReactComponent as ProfileSVG } from '@frontend/assets/icons/bold/profile-circle.svg';
 
 const routes = [
   {
@@ -58,6 +58,9 @@ export function Sidebar() {
           ))}
         </ul>
       </nav>
+      <div className="text-error-500 absolute bottom-0 left-0 px-6 py-10">
+        Logout
+      </div>
     </aside>
   );
 }

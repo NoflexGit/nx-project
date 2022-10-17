@@ -16,7 +16,7 @@ export function Checkbox(props: CheckboxProps) {
   const { inputProps } = useCheckbox(props, state, ref);
 
   return (
-    <label className={styles.wrapper}>
+    <label className={styles.component}>
       <VisuallyHidden>
         <input {...inputProps} ref={ref} />
       </VisuallyHidden>

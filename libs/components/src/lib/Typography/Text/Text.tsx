@@ -22,7 +22,6 @@ export function Text({
   children,
 }: TextProps) {
   const classes = cn(
-    styles.component,
     {
       [styles[weight]]: weight,
       [styles[size]]: size,

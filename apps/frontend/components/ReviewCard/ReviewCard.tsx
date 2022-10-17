@@ -1,4 +1,4 @@
-import { Separator, Typography } from '@nx-project/components';
+import { Separator, Typography } from '@common/components';
 
 /* eslint-disable-next-line */
 export interface ReviewCardProps {

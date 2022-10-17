@@ -1,8 +1,11 @@
 import Head from 'next/head';
 import { SSRProvider } from 'react-aria';
+import { ApolloProvider } from '@apollo/client';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import appoloClient from '@frontend/appolo/client';
 
-import '../styles/global.css';
 import { AppPropsWithLayout } from '../types';
+import '../styles/global.css';
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -13,7 +16,9 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <title>Welcome to frontend!</title>
       </Head>
       <SSRProvider>
-        <main className="app">{getLayout(<Component {...pageProps} />)}</main>
+        <ApolloProvider client={appoloClient}>
+          <main className="app">{getLayout(<Component {...pageProps} />)}</main>
+        </ApolloProvider>
       </SSRProvider>
     </>
   );

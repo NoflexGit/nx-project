@@ -1,5 +1,5 @@
-import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
-import { AppPropsWithLayout } from '../../types';
+import { DashboardLayout } from '@frontend/layouts';
+import { AppPropsWithLayout } from '@frontend/types';
 
 export function Dashboard(props: AppPropsWithLayout) {
   return <div></div>;

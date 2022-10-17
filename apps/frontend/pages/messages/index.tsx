@@ -5,12 +5,12 @@ import {
   TextField,
   Typography,
   IconButton,
-} from '@nx-project/components';
+} from '@common/components';
 
-import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
-import { AppPropsWithLayout } from '../../types';
-import { ContentPlate, ChatPreview } from '../../components';
-import { ReactComponent as MoreSVG } from '../../static/icons/bold/more-vertical.svg';
+import { DashboardLayout } from '@frontend/layouts';
+import { AppPropsWithLayout } from '@frontend/types';
+import { ContentPlate, ChatPreview } from '@frontend/components';
+import { ReactComponent as MoreSVG } from '@frontend/assets/icons/bold/more-vertical.svg';
 
 export function Dashboard(props: AppPropsWithLayout) {
   return (

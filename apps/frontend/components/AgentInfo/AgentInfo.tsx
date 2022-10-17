@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import { Avatar, Typography, Button } from '@nx-project/components';
+import { Avatar, Typography, Button } from '@common/components';
 
-import { ReactComponent as LocationSVG } from '../../static/icons/bold/location.svg';
+import { ReactComponent as LocationSVG } from '@frontend/assets/icons/bold/location.svg';
 
-/* eslint-disable-next-line */
 export interface AgentInfoProps {
   name: string;
   location: string;

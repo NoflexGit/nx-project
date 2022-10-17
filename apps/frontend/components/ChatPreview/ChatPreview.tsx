@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Avatar } from '@nx-project/components';
+import { Avatar } from '@common/components';
 import cn from 'clsx';
 
 export interface ChatPreviewProps {

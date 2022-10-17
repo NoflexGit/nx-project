@@ -1,4 +1,4 @@
-import { Avatar, TextField } from '@nx-project/components';
+import { Avatar, TextField } from '@common/components';
 import Image from 'next/image';
 
 /* eslint-disable-next-line */
@@ -6,8 +6,8 @@ export interface HeaderProps {}
 
 export function TitleBar(props: HeaderProps) {
   return (
-    <div className="h-20 px-10 flex border-l border-secondary-200">
-      <div className="flex items-center basis-1/3">
+    <div className="border-secondary-200 flex h-20 border-l px-10">
+      <div className="flex basis-1/3 items-center">
         <TextField
           placeholder="Search here ..."
           fluid
@@ -16,7 +16,7 @@ export function TitleBar(props: HeaderProps) {
           }}
         />
       </div>
-      <div className="flex items-center justify-end flex-1">
+      <div className="flex flex-1 items-center justify-end">
         <Avatar>
           <Image
             alt="Mountains"
