@@ -16,11 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@common/components": ["libs/components/src/index.ts"],
+      "@frontend/appolo/*": ["apps/frontend/appolo/*"],
+      "@frontend/assets/*": ["apps/frontend/assets/*"],
       "@frontend/components": ["apps/frontend/components/index.ts"],
       "@frontend/layouts": ["apps/frontend/layouts/index.ts"],
-      "@frontend/assets/*": ["apps/frontend/assets/*"],
-      "@frontend/types": ["apps/frontend/types/index.ts"],
-      "@frontend/appolo/*": ["apps/frontend/appolo/*"]
+      "@frontend/types": ["apps/frontend/types/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

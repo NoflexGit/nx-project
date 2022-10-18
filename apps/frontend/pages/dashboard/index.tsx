@@ -20,9 +20,6 @@ const QUERY = gql`
 
 export function Dashboard() {
   const { data, loading, error } = useQuery(QUERY);
-
-  console.log(data);
-
   return (
     <>
       <Typography.Title size="xl" weight="bold" className="mb-5">
