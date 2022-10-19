@@ -20,7 +20,8 @@
       "@frontend/assets/*": ["apps/frontend/assets/*"],
       "@frontend/components": ["apps/frontend/components/index.ts"],
       "@frontend/layouts": ["apps/frontend/layouts/index.ts"],
-      "@frontend/types": ["apps/frontend/types/index.ts"]
+      "@frontend/types": ["apps/frontend/types/index.ts"],
+      "@common/prisma": ["libs/prisma/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

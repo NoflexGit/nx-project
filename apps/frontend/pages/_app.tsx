@@ -15,11 +15,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       <Head>
         <title>Welcome to frontend!</title>
       </Head>
-      <SSRProvider>
-        <ApolloProvider client={appoloClient}>
+      <ApolloProvider client={appoloClient}>
+        <SSRProvider>
           <main className="app">{getLayout(<Component {...pageProps} />)}</main>
-        </ApolloProvider>
-      </SSRProvider>
+        </SSRProvider>
+      </ApolloProvider>
     </>
   );
 }

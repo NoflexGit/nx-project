@@ -1,0 +1,24 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model Property {
+    id         String       @id @default(auto()) @map("_id") @db.ObjectId
+    name       String
+    address    String
+    city       String
+    previewImg String?
+    createdAt  DateTime     @default(now())
+    type       PropertyType @default(APARTMENTS)
+}
+
+enum PropertyType {
+    APARTMENTS
+    HOUSE
+    COMMERCIAL
+}

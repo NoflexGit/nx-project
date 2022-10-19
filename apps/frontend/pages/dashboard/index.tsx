@@ -11,15 +11,20 @@ import { ReactComponent as BedSVG } from '@frontend/assets/icons/outline/bedroom
 import { ReactComponent as PairSVG } from '@frontend/assets/icons/outline/pair.svg';
 
 const QUERY = gql`
-  query NextLaunch {
-    launchNext {
-      mission_name
+  query GetProperties {
+    properties {
+      id
+      type
+      createdAt
+      address
+      previewImg
     }
   }
 `;
 
 export function Dashboard() {
   const { data, loading, error } = useQuery(QUERY);
+
   return (
     <>
       <Typography.Title size="xl" weight="bold" className="mb-5">
@@ -50,7 +55,7 @@ export function Dashboard() {
                   layout="fill"
                   objectFit="cover"
                   src={
-                    'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+                    'https://images.unsplash.com/photo-1612637968894-660373e23b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80'
                   }
                 />
               </div>
