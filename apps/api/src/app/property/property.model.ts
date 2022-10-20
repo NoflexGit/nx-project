@@ -1,4 +1,5 @@
 import { Field, ObjectType, GraphQLISODateTime } from '@nestjs/graphql';
+import { PropertyDetails } from '../property-details/property-details.model';
 
 @ObjectType()
 export class Property {
@@ -16,4 +17,7 @@ export class Property {
 
   @Field()
   previewImg: string;
+
+  @Field()
+  details: PropertyDetails;
 }

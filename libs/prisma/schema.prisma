@@ -8,17 +8,54 @@ datasource db {
 }
 
 model Property {
-    id         String       @id @default(auto()) @map("_id") @db.ObjectId
+    id         String           @id @default(auto()) @map("_id") @db.ObjectId
     name       String
     address    String
     city       String
     previewImg String?
-    createdAt  DateTime     @default(now())
-    type       PropertyType @default(APARTMENTS)
+    createdAt  DateTime         @default(now())
+    type       PropertyType     @default(APARTMENTS)
+    details    PropertyDetails?
+
+    @@map("properties")
+}
+
+model User {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    email     String   @unique
+    password  String
+    name      String
+    createdAt DateTime @default(now())
+    role      Role     @default(TENANT)
+
+    @@map("users")
+}
+
+model PropertyDetails {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    property    Property @relation(fields: [propertyId], references: [id])
+    propertyId  String   @unique @db.ObjectId
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    rooms       Int?
+    bathrooms   Int?
+    area        Int?
+    price       Int?
+    description String?
+    images      String[]
+
+    @@map("propertyDetails")
 }
 
 enum PropertyType {
     APARTMENTS
     HOUSE
     COMMERCIAL
+}
+
+enum Role {
+    LANDLORD
+    ADMIN
+    AGENT
+    TENANT
 }

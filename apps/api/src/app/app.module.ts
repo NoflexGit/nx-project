@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
-import { PrismaService } from '@common/prisma';
 
 import { PropertyModule } from './property/property.module';
+import { PropertyDetailsModule } from './property-details/property-details.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,8 +14,10 @@ import { PropertyModule } from './property/property.module';
       autoSchemaFile: 'schema.gql',
     }),
     PropertyModule,
+    PropertyDetailsModule,
+    UserModule,
+    AuthModule,
   ],
-  controllers: [],
-  providers: [PrismaService],
+  providers: [],
 })
 export class AppModule {}

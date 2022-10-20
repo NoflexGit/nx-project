@@ -5,7 +5,7 @@ import { PrismaService } from '@common/prisma';
 export class PropertyService {
   constructor(private prisma: PrismaService) {}
 
-  async properties() {
+  async getAll() {
     return this.prisma.property.findMany();
   }
 }

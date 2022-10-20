@@ -22,16 +22,33 @@ type Property {
   details: PropertyDetails!
 }
 
+type User {
+  id: String!
+  email: String!
+  name: String!
+  role: String!
+}
+
 type LoginUserResult {
-  token: String!
+  access_token: String!
 }
 
 type Query {
   properties: [Property!]!
-  login(user: LoginUserInput!): LoginUserResult!
+  login(loginUserInput: LoginUserInput!): LoginUserResult!
 }
 
 input LoginUserInput {
   email: String!
   password: String!
+}
+
+type Mutation {
+  register(registerUserInput: RegisterUserInput!): User!
+}
+
+input RegisterUserInput {
+  email: String!
+  password: String!
+  name: String!
 }
