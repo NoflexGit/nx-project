@@ -1,10 +1,11 @@
 import NavLink from '../NavLink/NavLink';
-
+import { useAuth } from '@frontend/hooks';
 import { ReactComponent as DashboardSVG } from '@frontend/assets/icons/bold/category.svg';
 import { ReactComponent as DiscoverSVG } from '@frontend/assets/icons/bold/discover.svg';
 import { ReactComponent as TicketSVG } from '@frontend/assets/icons/bold/ticket.svg';
 import { ReactComponent as ChatSVG } from '@frontend/assets/icons/bold/chat.svg';
 import { ReactComponent as ProfileSVG } from '@frontend/assets/icons/bold/profile-circle.svg';
+import { useRouter } from 'next/router';
 
 const routes = [
   {
@@ -35,6 +36,14 @@ const routes = [
 ];
 
 export function Sidebar() {
+  const { signOut } = useAuth();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.push('/signin');
+  };
+
   return (
     <aside className="relative z-0 hidden basis-[250px] shadow-lg md:block">
       <div className="mt-6 mb-16 flex items-center justify-center">
@@ -58,7 +67,10 @@ export function Sidebar() {
           ))}
         </ul>
       </nav>
-      <div className="text-error-500 absolute bottom-0 left-0 px-6 py-10">
+      <div
+        className="text-error-500 absolute bottom-0 left-0 px-6 py-10"
+        onClick={handleSignOut}
+      >
         Logout
       </div>
     </aside>

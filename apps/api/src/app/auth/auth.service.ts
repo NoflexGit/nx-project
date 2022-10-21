@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcrypt';
+import * as argon2 from 'argon2';
 
 import { RegisterUserInput, User } from '../user/user.model';
 import { UserService } from '../user/user.service';
@@ -20,7 +20,7 @@ export class AuthService {
       return null;
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await argon2.verify(user.password, password);
 
     if (!isMatch) {
       throw new BadRequestException('Invalid credentials');

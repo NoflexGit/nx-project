@@ -2,7 +2,12 @@ import { BadRequestException, UseGuards } from '@nestjs/common';
 import { Query, Args, Context, Mutation } from '@nestjs/graphql';
 import { Resolver } from '@nestjs/graphql';
 
-import { LoginUserInput, LoginUserResult, RegisterUserInput, User } from '../user/user.model';
+import {
+  LoginUserInput,
+  LoginUserResult,
+  RegisterUserInput,
+  User,
+} from '../user/user.model';
 import { AuthService } from './auth.service';
 import { GqlAuthGuard } from './guards/gql-auth.guard';
 
@@ -26,7 +31,9 @@ export class AuthResolver {
   }
 
   @Mutation(() => User)
-  async register(@Args('registerUserInput') registerUserInput: RegisterUserInput) {
+  async register(
+    @Args('registerUserInput') registerUserInput: RegisterUserInput
+  ) {
     return await this.authService.register(registerUserInput);
   }
 }

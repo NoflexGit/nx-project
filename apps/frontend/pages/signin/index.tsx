@@ -1,6 +1,28 @@
+import { useState } from 'react';
 import { Button, Checkbox, TextField, Typography } from '@common/components';
+import { useAuth } from '@frontend/hooks';
+import { useRouter } from 'next/router';
 
 export function Signin() {
+  const { signIn } = useAuth();
+  const router = useRouter();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChangeUsername = (value: string) => setUsername(value);
+  const handleChangePassword = (value: string) => setPassword(value);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await signIn({ username, password });
+      router.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <main className="flex min-h-screen">
       <div className="basis-1/2 bg-[#fafafa]"></div>
@@ -14,19 +36,15 @@ export function Signin() {
               Sign in your account
             </Typography.Text>
           </div>
-          <form className="mt-12">
+          <form className="mt-12" onSubmit={handleSubmit}>
             <div className="space-y-6">
               <TextField
-                onChange={() => {
-                  console.log(1);
-                }}
+                onChange={handleChangeUsername}
                 label="Your Email"
                 placeholder="Enter E-mail"
               />
               <TextField
-                onChange={() => {
-                  console.log(1);
-                }}
+                onChange={handleChangePassword}
                 label="Your Password"
                 type="password"
                 placeholder="Enter password"
@@ -35,7 +53,9 @@ export function Signin() {
             <div className="mt-4 mb-10">
               <Checkbox>Remember me</Checkbox>
             </div>
-            <Button fluid>Login</Button>
+            <Button type="submit" fluid>
+              Login
+            </Button>
           </form>
         </div>
       </div>

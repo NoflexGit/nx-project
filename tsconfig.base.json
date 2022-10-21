@@ -19,6 +19,7 @@
       "@common/prisma": ["libs/prisma/src/index.ts"],
       "@frontend/appolo/*": ["apps/frontend/appolo/*"],
       "@frontend/assets/*": ["apps/frontend/assets/*"],
+      "@frontend/hooks": ["apps/frontend/hooks"],
       "@frontend/components": ["apps/frontend/components/index.ts"],
       "@frontend/layouts": ["apps/frontend/layouts/index.ts"],
       "@frontend/types": ["apps/frontend/types/index.ts"]
