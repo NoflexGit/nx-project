@@ -20,24 +20,3 @@ export class LoginUserResult {
   @Field()
   access_token: string;
 }
-
-@InputType()
-export class LoginUserInput {
-  @Field()
-  email: string;
-
-  @Field()
-  password: string;
-}
-
-@InputType()
-export class RegisterUserInput {
-  @Field()
-  email: string;
-
-  @Field()
-  password: string;
-
-  @Field()
-  name: string;
-}

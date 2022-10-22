@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import { SSRProvider } from 'react-aria';
+import { Toaster } from 'react-hot-toast';
 
-import { AppPropsWithLayout } from '../types';
+import { AuthProvider } from '@frontend/components';
+import { AppPropsWithLayout } from '@frontend/types';
 import '../styles/global.css';
-import { AuthProvider } from '../contexts/auth/Auth';
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -16,6 +17,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       <AuthProvider>
         <SSRProvider>
           <main className="app">{getLayout(<Component {...pageProps} />)}</main>
+          <Toaster />
         </SSRProvider>
       </AuthProvider>
     </>

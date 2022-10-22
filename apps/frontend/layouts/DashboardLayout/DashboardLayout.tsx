@@ -1,11 +1,10 @@
 import { Sidebar, TitleBar } from '../../components';
 
-/* eslint-disable-next-line */
 export interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-export function DashboardLayout(props: DashboardLayoutProps) {
+export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="flex h-screen w-screen flex-wrap">
       <Sidebar />
@@ -13,7 +12,7 @@ export function DashboardLayout(props: DashboardLayoutProps) {
         <TitleBar />
         <main className="relative flex-1 overflow-hidden">
           <div className="absolute inset-0 overflow-y-auto overflow-x-hidden bg-[#F7F7F7] p-6 md:p-10">
-            {props.children}
+            {children}
           </div>
         </main>
       </div>

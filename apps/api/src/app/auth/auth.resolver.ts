@@ -1,13 +1,10 @@
-import { BadRequestException, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { Query, Args, Context, Mutation } from '@nestjs/graphql';
 import { Resolver } from '@nestjs/graphql';
+import { GetCreateUserArgs } from '../user/dto/args/create-user.args';
+import { GetLoginUserArgs } from '../user/dto/args/login-user.args';
 
-import {
-  LoginUserInput,
-  LoginUserResult,
-  RegisterUserInput,
-  User,
-} from '../user/user.model';
+import { LoginUserResult, User } from '../user/user.model';
 import { AuthService } from './auth.service';
 import { GqlAuthGuard } from './guards/gql-auth.guard';
 
@@ -17,23 +14,17 @@ export class AuthResolver {
 
   @Query(() => LoginUserResult)
   @UseGuards(GqlAuthGuard)
-  async login(
-    @Args('loginUserInput') loginUserInput: LoginUserInput,
-    @Context() context
-  ) {
-    const user = await this.authService.login(context.user);
+  async login(@Args() args: GetLoginUserArgs, @Context() context) {
+    return this.authService.login(context.user);
+  }
 
-    if (!user) {
-      throw new BadRequestException('Invalid credentials');
-    }
-
-    return user;
+  @Query(() => User)
+  async verifyToken(@Args('token') token: string) {
+    return this.authService.verifyToken(token);
   }
 
   @Mutation(() => User)
-  async register(
-    @Args('registerUserInput') registerUserInput: RegisterUserInput
-  ) {
-    return await this.authService.register(registerUserInput);
+  async register(@Args() args: GetCreateUserArgs) {
+    return await this.authService.register(args);
   }
 }

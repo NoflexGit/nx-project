@@ -3,9 +3,21 @@
 }
 
 .input {
-  @apply h-11 w-full rounded-md border border-gray-300 px-5 py-3;
+  @apply h-11 w-full rounded-md border border-gray-300 px-5 py-3 outline-none transition-colors;
+
+  &:focus {
+    @apply border-primary-500;
+  }
+}
+
+.error {
+  @apply border-error-500;
 }
 
 .label {
   @apply mb-2.5 block text-sm font-medium leading-5 text-gray-700;
+}
+
+.errorText {
+  @apply mt-1 text-sm text-red-500;
 }

@@ -6,3 +6,4 @@ export * from './ContentPlate/ContentPlate';
 export * from './DetailsGallery/DetailsGallery';
 export * from './AgentInfo/AgentInfo';
 export * from './ChatPreview/ChatPreview';
+export * from './AuthProvider/AuthProvider';

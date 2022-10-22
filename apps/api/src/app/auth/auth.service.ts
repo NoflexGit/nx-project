@@ -1,8 +1,9 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
+import { GetCreateUserArgs } from '../user/dto/args/create-user.args';
 
-import { RegisterUserInput, User } from '../user/user.model';
+import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { jwtToken } from './constants';
 
@@ -31,12 +32,13 @@ export class AuthService {
 
   login(user: User): { access_token: string } {
     const payload = { email: user.email, sub: user.id };
+
     return {
       access_token: this.jwtService.sign(payload),
     };
   }
 
-  async register(credentials: RegisterUserInput) {
+  async register(credentials: GetCreateUserArgs) {
     const user = await this.userService.getByEmail(credentials.email);
 
     if (user) {

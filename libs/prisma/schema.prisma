@@ -16,17 +16,20 @@ model Property {
     createdAt  DateTime         @default(now())
     type       PropertyType     @default(APARTMENTS)
     details    PropertyDetails?
+    agent      User             @relation(fields: [agentId], references: [id])
+    agentId    String           @map("agent_id") @db.ObjectId
 
     @@map("properties")
 }
 
 model User {
-    id        String   @id @default(auto()) @map("_id") @db.ObjectId
-    email     String   @unique
+    id        String     @id @default(auto()) @map("_id") @db.ObjectId
+    email     String     @unique
     password  String
     name      String
-    createdAt DateTime @default(now())
-    role      Role     @default(TENANT)
+    createdAt DateTime   @default(now())
+    role      Role       @default(TENANT)
+    Property  Property[]
 
     @@map("users")
 }

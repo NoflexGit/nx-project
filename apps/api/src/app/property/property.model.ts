@@ -15,8 +15,8 @@ export class Property {
   @Field(() => GraphQLISODateTime)
   createdAt: Date;
 
-  @Field()
-  previewImg: string;
+  @Field({ nullable: true })
+  previewImg?: string;
 
   @Field()
   details: PropertyDetails;

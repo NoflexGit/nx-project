@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { JwtModule } from '@nestjs/jwt';
@@ -15,7 +14,7 @@ import { AuthResolver } from './auth.resolver';
     JwtModule.register({
       secret: jwtToken,
       signOptions: {
-        expiresIn: 60,
+        expiresIn: 3600,
       },
     }),
     UserModule,

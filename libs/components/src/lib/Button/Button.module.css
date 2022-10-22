@@ -19,18 +19,22 @@
 /* Colors */
 
 .primary {
-  @apply bg-primary-500 text-white;
+  &[type='button'],
+  &[type='submit'],
+  &[type='reset'] {
+    @apply bg-primary-500 text-white;
 
-  &:hover {
-    @apply bg-primary-600;
-  }
+    &:hover {
+      @apply bg-primary-600;
+    }
 
-  &:active {
-    @apply bg-primary-700;
-  }
+    &:active {
+      @apply bg-primary-700;
+    }
 
-  &:disabled {
-    @apply bg-secondary-100;
+    &:disabled {
+      @apply bg-secondary-100;
+    }
   }
 }
 
