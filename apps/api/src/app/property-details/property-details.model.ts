@@ -8,6 +8,15 @@ export class PropertyDetails {
   @Field(() => GraphQLISODateTime)
   createdAt: Date;
 
+  @Field(() => Int, { nullable: true })
+  area?: number;
+
+  @Field(() => Int, { nullable: true })
+  rooms?: number;
+
+  @Field(() => Int, { nullable: true })
+  bathrooms?: number;
+
   @Field(() => Int)
-  rooms: number;
+  price: number;
 }

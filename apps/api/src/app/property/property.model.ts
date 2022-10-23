@@ -7,6 +7,9 @@ export class Property {
   id: string;
 
   @Field()
+  name: string;
+
+  @Field()
   type: string;
 
   @Field()

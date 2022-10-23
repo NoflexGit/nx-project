@@ -7,6 +7,19 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+model User {
+    id        String     @id @default(auto()) @map("_id") @db.ObjectId
+    email     String     @unique
+    password  String
+    name      String
+    createdAt DateTime   @default(now())
+    role      Role       @default(TENANT)
+    Property  Property[]
+    reviews   Review[]
+
+    @@map("users")
+}
+
 model Property {
     id         String           @id @default(auto()) @map("_id") @db.ObjectId
     name       String
@@ -18,20 +31,9 @@ model Property {
     details    PropertyDetails?
     agent      User             @relation(fields: [agentId], references: [id])
     agentId    String           @map("agent_id") @db.ObjectId
+    reviews    Review[]
 
     @@map("properties")
-}
-
-model User {
-    id        String     @id @default(auto()) @map("_id") @db.ObjectId
-    email     String     @unique
-    password  String
-    name      String
-    createdAt DateTime   @default(now())
-    role      Role       @default(TENANT)
-    Property  Property[]
-
-    @@map("users")
 }
 
 model PropertyDetails {
@@ -48,6 +50,19 @@ model PropertyDetails {
     images      String[]
 
     @@map("propertyDetails")
+}
+
+model Review {
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    property   Property @relation(fields: [propertyId], references: [id])
+    propertyId String   @db.ObjectId
+    createdAt  DateTime @default(now())
+    rating     Float
+    comment    String?
+    user       User     @relation(fields: [userId], references: [id])
+    userId     String   @db.ObjectId
+
+    @@map("reviews")
 }
 
 enum PropertyType {

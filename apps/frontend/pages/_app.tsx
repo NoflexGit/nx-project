@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 
 import { AuthProvider } from '@frontend/components';
 import { AppPropsWithLayout } from '@frontend/types';
+import 'simplebar-react/dist/simplebar.min.css';
 import '../styles/global.css';
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {

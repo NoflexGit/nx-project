@@ -1,41 +1,50 @@
-import NavLink from '../NavLink/NavLink';
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
+import { useRouter } from 'next/router';
+import cn from 'clsx';
+
 import { useAuth } from '@frontend/hooks';
 import { ReactComponent as DashboardSVG } from '@frontend/assets/icons/bold/category.svg';
 import { ReactComponent as DiscoverSVG } from '@frontend/assets/icons/bold/discover.svg';
 import { ReactComponent as TicketSVG } from '@frontend/assets/icons/bold/ticket.svg';
 import { ReactComponent as ChatSVG } from '@frontend/assets/icons/bold/chat.svg';
 import { ReactComponent as ProfileSVG } from '@frontend/assets/icons/bold/profile-circle.svg';
-import { useRouter } from 'next/router';
+import { ReactComponent as LogoutSVG } from '@frontend/assets/icons/bold/logout.svg';
+import NavLink from '../NavLink/NavLink';
+
+export interface SidebarProps {
+  className?: string;
+  view?: 'default' | 'compact';
+}
 
 const routes = [
   {
     name: 'Dashboard',
     href: '/dashboard',
-    icon: <DashboardSVG />,
+    icon: <DashboardSVG width={20} height={20} />,
   },
   {
     name: 'Explore',
     href: '/explore',
-    icon: <DiscoverSVG />,
+    icon: <DiscoverSVG width={20} height={20} />,
   },
   {
     name: 'My order',
     href: '/my-order',
-    icon: <TicketSVG />,
+    icon: <TicketSVG width={20} height={20} />,
   },
   {
     name: 'Messages',
     href: '/messages',
-    icon: <ChatSVG />,
+    icon: <ChatSVG width={20} height={20} />,
   },
   {
     name: 'My profile',
     href: '/profile',
-    icon: <ProfileSVG />,
+    icon: <ProfileSVG width={20} height={20} />,
   },
 ];
 
-export function Sidebar() {
+export function Sidebar({ view = 'default', className }: SidebarProps) {
   const { signOut } = useAuth();
   const router = useRouter();
 
@@ -44,34 +53,53 @@ export function Sidebar() {
     router.push('/signin');
   };
 
+  const wrapperClasses = cn(
+    'relative hidden shadow-lg md:block',
+    {
+      'basis-[250px]': view === 'default',
+      'basis-[60px]': view === 'compact',
+    },
+    className
+  );
+
+  const navItemClasses = cn(
+    'flex w-full items-center rounded-lg py-3 px-3 text-sm font-semibold transition-all duration-200',
+    {
+      'justify-center': view === 'compact',
+    }
+  );
+
   return (
-    <aside className="relative z-0 hidden basis-[250px] shadow-lg md:block">
+    <aside className={wrapperClasses}>
       <div className="mt-6 mb-16 flex items-center justify-center">
-        <div className="bg-primary-300 h-[24px] w-[126px]"></div>
+        {/* <div className="bg-primary-300 h-[24px] w-[126px]"></div> */}
       </div>
       <nav className="px-6">
-        <ul>
+        <ul className="space-y-4">
           {routes.map(({ name, href, icon }) => (
             <li key={name}>
               <NavLink
                 href={href}
                 activeClassName="bg-primary-100 text-primary-500"
-                defaultClassName="hover:text-primary-400 text-secondary-500"
+                defaultClassName="hover:text-primary-400 hover:bg-secondary-100 text-secondary-500"
               >
-                <a className="mb-4 flex w-full items-center rounded-lg py-3 px-4 text-sm font-semibold transition-all duration-200">
+                <a className={navItemClasses}>
                   {icon}
-                  <span className="ml-3">{name}</span>
+                  {view === 'default' && <span className="ml-3">{name}</span>}
                 </a>
               </NavLink>
             </li>
           ))}
         </ul>
       </nav>
-      <div
-        className="text-error-500 absolute bottom-0 left-0 px-6 py-10"
-        onClick={handleSignOut}
-      >
-        Logout
+      <div className="absolute bottom-0 left-0 mb-6 w-full px-6">
+        <button
+          className="text-error-500 hover:bg-error-100 active:bg-error-200 flex w-full items-center rounded-lg py-3 px-4 text-sm transition-all duration-200"
+          onClick={handleSignOut}
+        >
+          <LogoutSVG width={20} height={20} />
+          {view === 'default' && <span className="ml-3">Sign out</span>}
+        </button>
       </div>
     </aside>
   );
