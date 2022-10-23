@@ -20,27 +20,47 @@ const routes = [
   {
     name: 'Dashboard',
     href: '/dashboard',
-    icon: <DashboardSVG width={20} height={20} />,
+    icon: {
+      component: DashboardSVG,
+      width: 20,
+      height: 20,
+    },
   },
   {
     name: 'Explore',
     href: '/explore',
-    icon: <DiscoverSVG width={20} height={20} />,
+    icon: {
+      component: DiscoverSVG,
+      width: 20,
+      height: 20,
+    },
   },
   {
     name: 'My order',
     href: '/my-order',
-    icon: <TicketSVG width={20} height={20} />,
+    icon: {
+      component: TicketSVG,
+      width: 20,
+      height: 20,
+    },
   },
   {
     name: 'Messages',
     href: '/messages',
-    icon: <ChatSVG width={20} height={20} />,
+    icon: {
+      component: ChatSVG,
+      width: 18,
+      height: 18,
+    },
   },
   {
     name: 'My profile',
     href: '/profile',
-    icon: <ProfileSVG width={20} height={20} />,
+    icon: {
+      component: ProfileSVG,
+      width: 22,
+      height: 22,
+    },
   },
 ];
 
@@ -63,9 +83,10 @@ export function Sidebar({ view = 'default', className }: SidebarProps) {
   );
 
   const navItemClasses = cn(
-    'flex w-full items-center rounded-lg py-3 px-3 text-sm font-semibold transition-all duration-200',
+    'flex items-center rounded-lg text-sm font-semibold transition-colors duration-200',
     {
-      'justify-center': view === 'compact',
+      'justify-center w-11 h-11': view === 'compact',
+      'px-3 h-11 w-full': view === 'default',
     }
   );
 
@@ -76,20 +97,26 @@ export function Sidebar({ view = 'default', className }: SidebarProps) {
       </div>
       <nav className="px-6">
         <ul className="space-y-4">
-          {routes.map(({ name, href, icon }) => (
-            <li key={name}>
-              <NavLink
-                href={href}
-                activeClassName="bg-primary-100 text-primary-500"
-                defaultClassName="hover:text-primary-400 hover:bg-secondary-100 text-secondary-500"
-              >
-                <a className={navItemClasses}>
-                  {icon}
-                  {view === 'default' && <span className="ml-3">{name}</span>}
-                </a>
-              </NavLink>
-            </li>
-          ))}
+          {routes.map(
+            ({
+              name,
+              href,
+              icon: { component: IconComponent, ...restIconProps },
+            }) => (
+              <li key={name}>
+                <NavLink
+                  href={href}
+                  activeClassName="bg-primary-100 text-primary-500"
+                  defaultClassName="hover:text-primary-400 hover:bg-secondary-100 text-secondary-500"
+                >
+                  <a className={navItemClasses}>
+                    <IconComponent {...restIconProps} />
+                    {view === 'default' && <span className="ml-3">{name}</span>}
+                  </a>
+                </NavLink>
+              </li>
+            )
+          )}
         </ul>
       </nav>
       <div className="absolute bottom-0 left-0 mb-6 w-full px-6">

@@ -1,4 +1,10 @@
-import { Field, ObjectType, GraphQLISODateTime, Int } from '@nestjs/graphql';
+import {
+  Field,
+  ObjectType,
+  GraphQLISODateTime,
+  Int,
+  Float,
+} from '@nestjs/graphql';
 
 @ObjectType()
 export class PropertyDetails {
@@ -7,6 +13,9 @@ export class PropertyDetails {
 
   @Field(() => GraphQLISODateTime)
   createdAt: Date;
+
+  @Field(() => GraphQLISODateTime)
+  updatedAt?: Date;
 
   @Field(() => Int, { nullable: true })
   area?: number;
@@ -19,4 +28,10 @@ export class PropertyDetails {
 
   @Field(() => Int)
   price: number;
+
+  @Field(() => Float, { nullable: true })
+  longitude?: number;
+
+  @Field(() => Float, { nullable: true })
+  latitude?: number;
 }

@@ -7,3 +7,9 @@
     font-family: 'Urbanist', sans-serif;
   }
 }
+
+.simplebar-track.simplebar-vertical {
+  width: 8px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -5,10 +5,13 @@
 type PropertyDetails {
   id: String!
   createdAt: DateTime!
+  updatedAt: DateTime!
   area: Int
   rooms: Int
   bathrooms: Int
   price: Int!
+  longitude: Float
+  latitude: Float
 }
 
 """

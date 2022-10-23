@@ -17,13 +17,13 @@
     "paths": {
       "@common/components": ["libs/components/src/index.ts"],
       "@common/prisma": ["libs/prisma/src/index.ts"],
-      "@frontend/contexts": ["apps/frontend/contexts/index.ts"],
       "@frontend/assets/*": ["apps/frontend/assets/*"],
-      "@frontend/hooks": ["apps/frontend/hooks"],
       "@frontend/components": ["apps/frontend/components/index.ts"],
+      "@frontend/contexts": ["apps/frontend/contexts/index.ts"],
+      "@frontend/grapql/*": ["apps/frontend/graphql/*"],
+      "@frontend/hooks": ["apps/frontend/hooks"],
       "@frontend/layouts": ["apps/frontend/layouts/index.ts"],
-      "@frontend/types": ["apps/frontend/types/index.ts"],
-      "@frontend/grapql/*": ["apps/frontend/graphql/*"]
+      "@frontend/types": ["apps/frontend/types/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

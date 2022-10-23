@@ -14,6 +14,8 @@ export const GET_PROPERTY_LIST_QUERY = gql`
         rooms
         bathrooms
         area
+        longitude
+        latitude
       }
     }
   }

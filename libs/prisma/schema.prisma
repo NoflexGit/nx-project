@@ -8,14 +8,14 @@ datasource db {
 }
 
 model User {
-    id        String     @id @default(auto()) @map("_id") @db.ObjectId
-    email     String     @unique
-    password  String
-    name      String
-    createdAt DateTime   @default(now())
-    role      Role       @default(TENANT)
-    Property  Property[]
-    reviews   Review[]
+    id         String     @id @default(auto()) @map("_id") @db.ObjectId
+    email      String     @unique
+    password   String
+    name       String
+    createdAt  DateTime   @default(now())
+    role       Role       @default(TENANT)
+    properties Property[]
+    reviews    Review[]
 
     @@map("users")
 }
@@ -29,8 +29,8 @@ model Property {
     createdAt  DateTime         @default(now())
     type       PropertyType     @default(APARTMENTS)
     details    PropertyDetails?
-    agent      User             @relation(fields: [agentId], references: [id])
-    agentId    String           @map("agent_id") @db.ObjectId
+    agent      User?            @relation(fields: [agentId], references: [id])
+    agentId    String?          @map("agent_id") @db.ObjectId
     reviews    Review[]
 
     @@map("properties")
@@ -48,6 +48,8 @@ model PropertyDetails {
     price       Int?
     description String?
     images      String[]
+    latitude    Float?
+    longitude   Float?
 
     @@map("propertyDetails")
 }

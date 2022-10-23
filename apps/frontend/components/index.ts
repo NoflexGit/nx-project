@@ -8,3 +8,4 @@ export * from './AgentInfo/AgentInfo';
 export * from './ChatPreview/ChatPreview';
 export * from './AuthProvider/AuthProvider';
 export * from './PropertyCard/PropertyCard';
+export * from './PropertyMap/PropertyMap';
