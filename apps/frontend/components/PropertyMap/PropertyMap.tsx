@@ -1,5 +1,7 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { useCallback, useState } from 'react';
 import Image from 'next/image';
+import { ReactComponent as MapPin } from '@frontend/assets/icons/pin.svg';
 import { GoogleMap, useJsApiLoader, OverlayView } from '@react-google-maps/api';
 
 /* eslint-disable-next-line */
@@ -269,16 +271,19 @@ export function PropertyMap({ items, activeItem }: PropertyMapProps) {
           mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           key={item.id}
         >
-          <section>
-            <div className="relative h-16 w-24">
-              <Image
-                src={item.previewImg}
-                alt={item.address}
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-            <div>123</div>
+          <section className="relative">
+            {/* <div className="rounded bg-white p-2 shadow-lg">
+              <div className="relative h-16 w-24 overflow-hidden rounded">
+                <Image
+                  src={item.previewImg}
+                  alt={item.address}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            </div> */}
+
+            <MapPin className="absolute -top-full -left-full" />
           </section>
         </OverlayView>
       ))}

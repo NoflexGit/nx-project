@@ -4,7 +4,7 @@ import { Resolver } from '@nestjs/graphql';
 import { GetCreateUserArgs } from '../user/dto/args/create-user.args';
 import { GetLoginUserArgs } from '../user/dto/args/login-user.args';
 
-import { LoginUserResult, User } from '../user/user.model';
+import { LoginUserResult, User } from '../user/dto/models/user.model';
 import { AuthService } from './auth.service';
 import { GqlAuthGuard } from './guards/gql-auth.guard';
 

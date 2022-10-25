@@ -3,7 +3,6 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 
 import { PropertyModule } from './property/property.module';
-import { PropertyDetailsModule } from './property-details/property-details.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 
@@ -14,7 +13,6 @@ import { AuthModule } from './auth/auth.module';
       autoSchemaFile: 'schema.gql',
     }),
     PropertyModule,
-    PropertyDetailsModule,
     UserModule,
     AuthModule,
   ],

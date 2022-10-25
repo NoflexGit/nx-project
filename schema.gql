@@ -2,16 +2,45 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PropertyDetails {
+type User {
   id: String!
+  email: String!
+  name: String!
+  role: Role!
+  address: String
+  phone: String
+  avatar: String
+}
+
+enum Role {
+  LANDLORD
+  ADMIN
+  AGENT
+  TENANT
+}
+
+type Agent {
+  id: String!
+  email: String!
+  name: String!
+  role: Role!
+  address: String
+  phone: String
+  avatar: String
+  propertiesCount: Float!
+}
+
+type LoginUserResult {
+  access_token: String!
+}
+
+type Review {
+  id: String!
+  comment: String!
+  rating: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
-  area: Int
-  rooms: Int
-  bathrooms: Int
-  price: Int!
-  longitude: Float
-  latitude: Float
+  user: User!
 }
 
 """
@@ -19,28 +48,46 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type PropertyReviews {
+  list: [Review!]
+  count: Int
+  average: Float
+}
+
+type PropertyDetails {
+  id: String!
+  price: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  area: Int
+  rooms: Int
+  bathrooms: Int
+  longitude: Float
+  latitude: Float
+  description: String
+}
+
 type Property {
   id: String!
   name: String!
-  type: String!
+  type: PropertyType!
   address: String!
   createdAt: DateTime!
   previewImg: String
   details: PropertyDetails!
+  agent: Agent!
+  reviews: PropertyReviews!
+  agentId: String!
 }
 
-type User {
-  id: String!
-  email: String!
-  name: String!
-  role: String!
-}
-
-type LoginUserResult {
-  access_token: String!
+enum PropertyType {
+  APARTMENTS
+  HOUSE
+  COMMERCIAL
 }
 
 type Query {
+  property(id: String!): Property!
   properties: [Property!]!
   login(email: String!, password: String!): LoginUserResult!
   verifyToken(token: String!): User!

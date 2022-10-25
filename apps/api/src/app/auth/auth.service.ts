@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
 import { GetCreateUserArgs } from '../user/dto/args/create-user.args';
 
-import { User } from '../user/user.model';
+import { User } from '../user/dto/models/user.model';
 import { UserService } from '../user/user.service';
 import { jwtToken } from './constants';
 
