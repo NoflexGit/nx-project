@@ -1,83 +1,117 @@
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "mongodb"
-    url      = env("DATABASE_URL")
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-    id         String     @id @default(auto()) @map("_id") @db.ObjectId
-    email      String     @unique
-    password   String
-    phone      String?
-    avatar     String?
-    name       String
-    createdAt  DateTime   @default(now())
-    role       Role       @default(TENANT)
-    properties Property[]
-    reviews    Review[]
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  email      String     @unique
+  password   String
+  phone      String?
+  avatar     String?
+  name       String
+  createdAt  DateTime   @default(now())
+  role       Role       @default(TENANT)
+  properties Property[]
+  reviews    Review[]
+  orders     Order[]
+  favorites  Favorite[]
 
-    @@map("users")
+  @@map("users")
 }
 
 model Property {
-    id         String           @id @default(auto()) @map("_id") @db.ObjectId
-    name       String
-    address    String
-    city       String
-    previewImg String?
-    createdAt  DateTime         @default(now())
-    type       PropertyType     @default(APARTMENTS)
-    details    PropertyDetails?
-    agent      User?            @relation(fields: [agentId], references: [id])
-    agentId    String?          @map("agent_id") @db.ObjectId
-    reviews    Review[]
+  id         String           @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  address    String
+  city       String
+  previewImg String?
+  createdAt  DateTime         @default(now())
+  type       PropertyType     @default(APARTMENTS)
+  details    PropertyDetails?
+  agent      User?            @relation(fields: [agentId], references: [id])
+  agentId    String?          @map("agent_id") @db.ObjectId
+  reviews    Review[]
+  orders     Order[]
+  favorite   Favorite?        @relation(fields: [favoriteId], references: [id])
+  favoriteId String?          @db.ObjectId
 
-    @@map("properties")
+  @@map("properties")
 }
 
 model PropertyDetails {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    property    Property @relation(fields: [propertyId], references: [id])
-    propertyId  String   @unique @db.ObjectId
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    rooms       Int?
-    bathrooms   Int?
-    area        Int?
-    price       Int?
-    description String?
-    images      String[]
-    latitude    Float?
-    longitude   Float?
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  property    Property @relation(fields: [propertyId], references: [id])
+  propertyId  String   @unique @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  rooms       Int?
+  bathrooms   Int?
+  area        Int?
+  price       Int?
+  description String?
+  images      String[]
+  latitude    Float?
+  longitude   Float?
 
-    @@map("propertyDetails")
+  @@map("propertyDetails")
 }
 
 model Review {
-    id         String   @id @default(auto()) @map("_id") @db.ObjectId
-    property   Property @relation(fields: [propertyId], references: [id])
-    propertyId String   @db.ObjectId
-    createdAt  DateTime @default(now())
-    rating     Float
-    comment    String?
-    user       User     @relation(fields: [userId], references: [id])
-    userId     String   @db.ObjectId
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  property   Property @relation(fields: [propertyId], references: [id])
+  propertyId String   @db.ObjectId
+  createdAt  DateTime @default(now())
+  rating     Float
+  comment    String?
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.ObjectId
 
-    @@map("reviews")
+  @@map("reviews")
+}
+
+model Order {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt  DateTime    @default(now())
+  property   Property    @relation(fields: [propertyId], references: [id])
+  propertyId String      @db.ObjectId
+  user       User        @relation(fields: [userId], references: [id])
+  userId     String      @db.ObjectId
+  status     OrderStatus @default(PENDING)
+
+
+  @@map("orders")
+}
+
+model Favorite {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime   @default(now())
+  property  Property[]
+  user      User       @relation(fields: [userId], references: [id])
+  userId    String     @db.ObjectId
+
+  @@map("favorites")
 }
 
 enum PropertyType {
-    APARTMENTS
-    HOUSE
-    COMMERCIAL
+  APARTMENTS
+  HOUSE
+  COMMERCIAL
 }
 
 enum Role {
-    LANDLORD
-    ADMIN
-    AGENT
-    TENANT
+  LANDLORD
+  ADMIN
+  AGENT
+  TENANT
+}
+
+enum OrderStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }

@@ -61,6 +61,9 @@ export class PropertyDetails {
   @Field(() => GraphQLISODateTime)
   updatedAt?: Date;
 
+  @Field(() => [String])
+  images: string[];
+
   @Field(() => Int, { nullable: true })
   area?: number;
 

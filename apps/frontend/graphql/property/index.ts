@@ -43,6 +43,7 @@ export const GET_PROPERTY_QUERY = gql`
         longitude
         latitude
         description
+        images
       }
       reviews {
         average

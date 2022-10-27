@@ -5,12 +5,14 @@ import Link from 'next/link';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useAuth } from '@frontend/hooks';
 import { AuthLayout } from '@frontend/layouts';
+import { useLazyQuery } from '@apollo/client';
+import { LOGIN_USER_QUERY } from '@frontend/grapql/auth';
 
 export function Signin() {
-  const { signIn } = useAuth();
   const router = useRouter();
+
+  const [login, { loading, error, data }] = useLazyQuery(LOGIN_USER_QUERY);
 
   const {
     control,
@@ -34,7 +36,12 @@ export function Signin() {
 
   const onSubmit = async ({ email, password }) => {
     try {
-      await signIn({ email, password });
+      await login({
+        variables: {
+          email,
+          password,
+        },
+      });
     } catch (error) {}
   };
 
@@ -42,7 +49,7 @@ export function Signin() {
     <>
       <div className="space-y-4">
         <Typography.Title size="2xl" weight="bold">
-          Welcome Back to Sewo!
+          Welcome Back to Estaty!
         </Typography.Title>
         <Typography.Text color="secondary">
           Sign in your account

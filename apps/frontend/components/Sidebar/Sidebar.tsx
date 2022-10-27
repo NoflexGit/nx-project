@@ -2,7 +2,6 @@
 import { useRouter } from 'next/router';
 import cn from 'clsx';
 
-import { useAuth } from '@frontend/hooks';
 import { ReactComponent as DashboardSVG } from '@frontend/assets/icons/bold/category.svg';
 import { ReactComponent as DiscoverSVG } from '@frontend/assets/icons/bold/discover.svg';
 import { ReactComponent as TicketSVG } from '@frontend/assets/icons/bold/ticket.svg';
@@ -65,11 +64,9 @@ const routes = [
 ];
 
 export function Sidebar({ view = 'default', className }: SidebarProps) {
-  const { signOut } = useAuth();
   const router = useRouter();
 
   const handleSignOut = async () => {
-    await signOut();
     router.push('/signin');
   };
 

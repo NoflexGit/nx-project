@@ -59,6 +59,7 @@ type PropertyDetails {
   price: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
+  images: [String!]!
   area: Int
   rooms: Int
   bathrooms: Int

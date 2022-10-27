@@ -15,7 +15,7 @@ export class AuthResolver {
   @Query(() => LoginUserResult)
   @UseGuards(GqlAuthGuard)
   async login(@Args() args: GetLoginUserArgs, @Context() context) {
-    return this.authService.login(context.user);
+    return this.authService.login(context.req.user);
   }
 
   @Query(() => User)
