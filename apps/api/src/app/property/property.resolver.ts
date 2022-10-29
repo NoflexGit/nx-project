@@ -13,11 +13,13 @@ export class PropertyResolver {
   ) {}
 
   @Query(() => Property)
+  @UseGuards(JwtAuthGuard)
   async property(@Args('id') id: string) {
     return this.propertyService.getById(id);
   }
 
   @Query(() => [Property])
+  @UseGuards(JwtAuthGuard)
   async properties() {
     return this.propertyService.getAll();
   }

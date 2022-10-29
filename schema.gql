@@ -6,11 +6,17 @@ type User {
   id: String!
   email: String!
   name: String!
+  createdAt: DateTime!
   role: Role!
   address: String
   phone: String
   avatar: String
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 enum Role {
   LANDLORD
@@ -23,6 +29,7 @@ type Agent {
   id: String!
   email: String!
   name: String!
+  createdAt: DateTime!
   role: Role!
   address: String
   phone: String
@@ -42,11 +49,6 @@ type Review {
   updatedAt: DateTime!
   user: User!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type PropertyReviews {
   list: [Review!]
@@ -87,13 +89,35 @@ enum PropertyType {
   COMMERCIAL
 }
 
+type Chat {
+  id: String!
+  messages: [Message!]!
+  participants: [Participant!]!
+}
+
+type Message {
+  id: String!
+  text: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Participant {
+  id: String!
+  userId: String!
+  chatId: String!
+  name: String!
+}
+
 type Query {
   property(id: String!): Property!
   properties: [Property!]!
-  login(email: String!, password: String!): LoginUserResult!
-  verifyToken(token: String!): User!
+  user(id: String!): User!
+  chatsByUserId(id: String!): [Chat!]!
 }
 
 type Mutation {
+  login(email: String!, password: String!): LoginUserResult!
+  verifyToken(token: String!): User!
   register(name: String!, email: String!, password: String!): User!
 }

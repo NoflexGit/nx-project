@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { PropertyModule } from './property/property.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     PropertyModule,
     UserModule,
     AuthModule,
+    MessagesModule,
   ],
   providers: [],
 })

@@ -2,22 +2,24 @@ import { Button, Checkbox, TextField, Typography } from '@common/components';
 import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { AuthLayout } from '@frontend/layouts';
-import { useLazyQuery } from '@apollo/client';
-import { LOGIN_USER_QUERY } from '@frontend/grapql/auth';
+import { useLazyQuery, useMutation } from '@apollo/client';
+import { LOGIN_USER_MUTATION } from '@frontend/grapql/auth';
+import { useEffect } from 'react';
 
 export function Signin() {
   const router = useRouter();
 
-  const [login, { loading, error, data }] = useLazyQuery(LOGIN_USER_QUERY);
+  const [login] = useMutation(LOGIN_USER_MUTATION);
 
   const {
     control,
     handleSubmit,
-    formState: { isValid, errors },
+    formState: { errors },
   } = useForm({
     defaultValues: {
       email: '',
@@ -36,12 +38,15 @@ export function Signin() {
 
   const onSubmit = async ({ email, password }) => {
     try {
-      await login({
+      const { data } = await login({
         variables: {
           email,
           password,
         },
       });
+
+      localStorage.setItem('jwt_token', data.login.access_token);
+      router.push('/dashboard');
     } catch (error) {}
   };
 

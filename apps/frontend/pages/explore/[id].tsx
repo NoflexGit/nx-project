@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Button, Typography } from '@common/components';
 
 import {
@@ -8,17 +7,18 @@ import {
   PropertyGallery,
 } from '@frontend/components';
 import { DashboardLayout } from '@frontend/layouts';
-import { AppPropsWithLayout } from '@frontend/types';
 import { ReactComponent as LocationSVG } from '@frontend/assets/icons/bold/location.svg';
 import { ReactComponent as BedSVG } from '@frontend/assets/icons/outline/bedroom.svg';
-import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 import { GET_PROPERTY_QUERY } from '@frontend/grapql/property';
-import client from '../../appolo';
+import { initializeApollo } from '../../appolo';
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
+
+  const apolloClient = initializeApollo(null, context);
+
   try {
-    const { data } = await client.query({
+    const { data, error } = await apolloClient.query({
       query: GET_PROPERTY_QUERY,
       variables: {
         id,
@@ -32,6 +32,12 @@ export async function getServerSideProps(context) {
     };
   } catch (error) {
     console.log(error);
+
+    return {
+      redirect: {
+        destination: '/404',
+      },
+    };
   }
 }
 

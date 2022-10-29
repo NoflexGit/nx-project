@@ -9,6 +9,7 @@ import { ReactComponent as ChatSVG } from '@frontend/assets/icons/bold/chat.svg'
 import { ReactComponent as ProfileSVG } from '@frontend/assets/icons/bold/profile-circle.svg';
 import { ReactComponent as LogoutSVG } from '@frontend/assets/icons/bold/logout.svg';
 import NavLink from '../NavLink/NavLink';
+import { useApolloClient } from '@apollo/client';
 
 export interface SidebarProps {
   className?: string;
@@ -65,8 +66,10 @@ const routes = [
 
 export function Sidebar({ view = 'default', className }: SidebarProps) {
   const router = useRouter();
+  const client = useApolloClient();
 
   const handleSignOut = async () => {
+    localStorage.removeItem('jwt_token');
     router.push('/signin');
   };
 

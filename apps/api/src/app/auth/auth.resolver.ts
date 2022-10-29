@@ -12,13 +12,21 @@ import { GqlAuthGuard } from './guards/gql-auth.guard';
 export class AuthResolver {
   constructor(private readonly authService: AuthService) {}
 
-  @Query(() => LoginUserResult)
+  @Mutation(() => LoginUserResult)
   @UseGuards(GqlAuthGuard)
   async login(@Args() args: GetLoginUserArgs, @Context() context) {
-    return this.authService.login(context.req.user);
+    const { access_token } = this.authService.login(context.req.user);
+
+    context.req.res.cookie('jwt_token', access_token, {
+      httpOnly: true,
+      secure: false,
+      maxAge: 3600000,
+    });
+
+    return { access_token };
   }
 
-  @Query(() => User)
+  @Mutation(() => User)
   async verifyToken(@Args('token') token: string) {
     return this.authService.verifyToken(token);
   }

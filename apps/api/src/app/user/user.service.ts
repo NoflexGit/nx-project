@@ -15,6 +15,14 @@ export class UserService {
     });
   }
 
+  async getById(id: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
+
   async getAgent(agentId: string): Promise<Agent> {
     const agent = await this.prisma.user.findUnique({
       where: { id: agentId },

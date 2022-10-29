@@ -9,7 +9,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
     <main className="grid min-h-screen grid-cols-1 md:grid-cols-2">
       <div className="relative hidden bg-[#fafafa] md:block">
         <Image
-          src="https://images.unsplash.com/photo-1560440021-33f9b867899d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=718&q=80"
+          src="https://images.unsplash.com/photo-1560440021-33f9b867899d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=100"
           alt="Auth Background"
           layout="fill"
           objectFit="cover"
