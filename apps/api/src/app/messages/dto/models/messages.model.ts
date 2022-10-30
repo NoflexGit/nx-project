@@ -1,12 +1,5 @@
-import {
-  Field,
-  ObjectType,
-  GraphQLISODateTime,
-  Int,
-  Float,
-  registerEnumType,
-} from '@nestjs/graphql';
-import { PropertyType } from '@prisma/client';
+import { Field, ObjectType, GraphQLISODateTime } from '@nestjs/graphql';
+import { User } from '../../../user/dto/models/user.model';
 
 @ObjectType()
 export class Chat {
@@ -46,6 +39,6 @@ export class Participant {
   @Field()
   chatId: string;
 
-  @Field()
-  name: string;
+  @Field(() => User)
+  user: User;
 }

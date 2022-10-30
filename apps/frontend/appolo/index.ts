@@ -3,8 +3,11 @@ import cookie from 'cookie';
 import type { GetServerSidePropsContext } from 'next';
 import type { IncomingMessage } from 'http';
 import type { NormalizedCacheObject } from '@apollo/client';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+import { createClient } from 'graphql-ws';
+import { getMainDefinition } from '@apollo/client/utilities';
 
 interface PageProps {
   props?: Record<string, any>;
@@ -28,6 +31,15 @@ const createApolloClient = (ctx?: GetServerSidePropsContext) => {
     credentials: 'same-origin',
   });
 
+  const wsLink =
+    typeof window !== 'undefined'
+      ? new GraphQLWsLink(
+          createClient({
+            url: 'ws://localhost:3333/graphql',
+          })
+        )
+      : null;
+
   const authLink = setContext((_, { headers }) => {
     const token = getToken(ctx?.req);
 
@@ -39,9 +51,24 @@ const createApolloClient = (ctx?: GetServerSidePropsContext) => {
     };
   });
 
+  const splitLink =
+    typeof window !== 'undefined' && wsLink != null
+      ? split(
+          ({ query }) => {
+            const def = getMainDefinition(query);
+            return (
+              def.kind === 'OperationDefinition' &&
+              def.operation === 'subscription'
+            );
+          },
+          wsLink,
+          httpLink
+        )
+      : httpLink;
+
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
-    link: authLink.concat(httpLink),
+    link: authLink.concat(splitLink),
     cache: new InMemoryCache(),
   });
 };

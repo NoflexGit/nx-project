@@ -11,8 +11,24 @@ import { DashboardLayout } from '@frontend/layouts';
 import { AppPropsWithLayout } from '@frontend/types';
 import { ContentPlate, ChatPreview } from '@frontend/components';
 import { ReactComponent as MoreSVG } from '@frontend/assets/icons/bold/more-vertical.svg';
+import { useQuery, useSubscription } from '@apollo/client';
+import { GET_CHATS } from '@frontend/grapql/messages';
+import { useEffect, useState } from 'react';
 
-export function Dashboard(props: AppPropsWithLayout) {
+export function Messages(props: AppPropsWithLayout) {
+  const [activeChat, setActiveChat] = useState(null);
+  const { data, error, loading } = useQuery(GET_CHATS, {
+    variables: {
+      userId: '63529aeb8745f59e231fdee7',
+    },
+  });
+
+  useEffect(() => {
+    if (data) {
+      setActiveChat(data.getChatsByUser[0]);
+    }
+  }, [data]);
+
   return (
     <ContentPlate className="h-full w-full p-0">
       <div className="grid h-full grid-cols-6">
@@ -25,17 +41,15 @@ export function Dashboard(props: AppPropsWithLayout) {
           </div>
           <TextField />
           <div className="space-y-4">
-            <ChatPreview
-              isActive
-              name="John Doe"
-              avatar="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
-              message="Hi, how is it going on?"
-            />
-            <ChatPreview
-              name="John Doe"
-              avatar="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
-              message="Hi, how is it going on?"
-            />
+            {data?.getChatsByUser.map((chat) => (
+              <ChatPreview
+                key={chat.id}
+                isActive={activeChat?.id === chat.id}
+                name={chat.participants[0].user.name}
+                avatar={chat.participants[0].user.avatar}
+                message="Hi, how is it going on?"
+              />
+            ))}
           </div>
         </div>
         <div className="relative col-span-4 flex flex-col">
@@ -137,8 +151,8 @@ export function Dashboard(props: AppPropsWithLayout) {
   );
 }
 
-Dashboard.getLayout = function getLayout(page) {
+Messages.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
-export default Dashboard;
+export default Messages;

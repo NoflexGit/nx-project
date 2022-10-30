@@ -17,6 +17,11 @@ import { MessagesModule } from './messages/messages.module';
         credentials: true,
         origin: true,
       },
+      subscriptions: {
+        'graphql-ws': {
+          path: '/graphql',
+        },
+      },
     }),
     PropertyModule,
     UserModule,

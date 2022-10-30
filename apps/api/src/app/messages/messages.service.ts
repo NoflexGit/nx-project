@@ -14,8 +14,23 @@ export class MessagesService {
     });
   }
 
+  async getParticipantsByChatId(chatId: string) {
+    const data = this.prisma.chatParticipant.findMany({
+      where: {
+        chatId,
+      },
+      include: {
+        user: true,
+      },
+    });
+
+    console.log(data);
+
+    return data;
+  }
+
   async getChatsByUser(userId: string) {
-    return this.prisma.chat.findMany({
+    return await this.prisma.chat.findMany({
       where: {
         participants: {
           some: {
@@ -27,12 +42,21 @@ export class MessagesService {
         messages: true,
         participants: {
           include: {
-            user: {
-              select: {
-                id: true,
-                avatar: true,
-              },
-            },
+            user: true,
+          },
+        },
+      },
+    });
+  }
+
+  async createChat(participantIds: string[]) {
+    return await this.prisma.chat.create({
+      data: {
+        participants: {
+          createMany: {
+            data: participantIds.map((id) => ({
+              userId: id,
+            })),
           },
         },
       },

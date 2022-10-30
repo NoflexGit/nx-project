@@ -106,18 +106,23 @@ type Participant {
   id: String!
   userId: String!
   chatId: String!
-  name: String!
+  user: User!
 }
 
 type Query {
   property(id: String!): Property!
   properties: [Property!]!
   user(id: String!): User!
-  chatsByUserId(id: String!): [Chat!]!
+  getChatsByUser(id: String!): [Chat!]!
 }
 
 type Mutation {
   login(email: String!, password: String!): LoginUserResult!
   verifyToken(token: String!): User!
   register(name: String!, email: String!, password: String!): User!
+  createChat(users: [String!]!): Chat!
+}
+
+type Subscription {
+  chatCreated: Chat!
 }
