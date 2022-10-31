@@ -1,4 +1,11 @@
-import { Resolver, Query, ResolveField, Parent, Args } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  ResolveField,
+  Parent,
+  Args,
+  Mutation,
+} from '@nestjs/graphql';
 import { Property } from './dto/models/property.model';
 import { PropertyService } from './property.service';
 import { UseGuards } from '@nestjs/common';
@@ -22,6 +29,21 @@ export class PropertyResolver {
   @UseGuards(JwtAuthGuard)
   async properties() {
     return this.propertyService.getAll();
+  }
+
+  @Query()
+  @UseGuards(JwtAuthGuard)
+  async getFavorites(@Args('userId') userId: string) {
+    return await this.propertyService.getFavorites(userId);
+  }
+
+  @Mutation()
+  @UseGuards(JwtAuthGuard)
+  async addPropertyToFavorites(
+    @Args('id') id: string,
+    @Args('userId') userId: string
+  ) {
+    return await this.propertyService.addPropertyToFavorites(id, userId);
   }
 
   @ResolveField()

@@ -41,4 +41,19 @@ export class PropertyService {
       average,
     };
   }
+
+  async addPropertyToFavorites(propertyId: string, userId: string) {
+    const favoritesByUser = await this.prisma.favorite.findMany({
+      where: { userId },
+    });
+  }
+
+  async getFavorites(userId: string) {
+    const favorites = await this.prisma.favorite.findMany({
+      where: { userId },
+      include: { property: true },
+    });
+
+    return favorites.map(({ property }) => property);
+  }
 }
